@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SmallMe!</title>
+	<script type="text/javascript" src="../script/jquery.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"></link>
+	<style type="text/css">
+		.centrado{
+			position: relative;
+			margin-top: 15%;
+		}
+		.logo{
+			width: 300px;
+		}
+		.inputs{
+			width: 500px;
+		}
+		body{
+			background: rgba(230,229,255,0.96);
+			background: -moz-linear-gradient(left, rgba(230,229,255,0.96) 0%, rgba(234,233,255,0.96) 15%, rgba(245,245,255,1) 60%, rgba(255,255,255,1) 100%);
+			background: -webkit-gradient(left top, right top, color-stop(0%, rgba(230,229,255,0.96)), color-stop(15%, rgba(234,233,255,0.96)), color-stop(60%, rgba(245,245,255,1)), color-stop(100%, rgba(255,255,255,1)));
+			background: -webkit-linear-gradient(left, rgba(230,229,255,0.96) 0%, rgba(234,233,255,0.96) 15%, rgba(245,245,255,1) 60%, rgba(255,255,255,1) 100%);
+			background: -o-linear-gradient(left, rgba(230,229,255,0.96) 0%, rgba(234,233,255,0.96) 15%, rgba(245,245,255,1) 60%, rgba(255,255,255,1) 100%);
+			background: -ms-linear-gradient(left, rgba(230,229,255,0.96) 0%, rgba(234,233,255,0.96) 15%, rgba(245,245,255,1) 60%, rgba(255,255,255,1) 100%);
+			background: linear-gradient(to right, rgba(230,229,255,0.96) 0%, rgba(234,233,255,0.96) 15%, rgba(245,245,255,1) 60%, rgba(255,255,255,1) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6e5ff', endColorstr='#ffffff', GradientType=1 );
+		}
+	</style>
+	<script type="text/javascript">
+	function enviar(){
+		$('#resultado').html("<img width='80' height='50' src='../img/loading1.gif'>");
+		var link = $('#link_input').val();
+		$.post('../php/insertar_link.php',{link:link},function(data){
+			$('#resultado').html(data);
+		});
+	}
+	</script>
+</head>
+<body>
+	<div class="centrado">
+		<CENTER>
+		<img src="../img/logo1.png" class="logo">
+		<br><br>
+		<div class="input-group inputs">
+			<input class="form-control" type="text" id="link_input" placeholder="www.example.es"></input>
+		    <span class="input-group-btn">
+		   		<button class="btn btn-default" onclick="enviar()">Smaller</button>
+		    </span>
+		</div>
+		<br>
+	    <div id="resultado">
+		</div>
+		<br><br><br><br><br><br>
+		<img src="../img/symphony.png" width="200" height="60"></img>
+	</div>
+</body>
+</html>
